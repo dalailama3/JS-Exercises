@@ -143,3 +143,17 @@ function merge(arr1, arr2, arr3) {
   }
   return arr3;
 }
+
+function mergeSort(arr) {
+  var n = arr.length;
+  if (n > 1) {
+    var middle = Math.floor(n/2);
+    var left = arr.slice(0, middle);
+    var right = arr.slice(middle);
+    mergeSort(left);
+    mergeSort(right);
+    return merge(left, right, arr);
+  }
+}
+
+console.log(mergeSort([10,9,4,6,3,1,9,2,5]));
