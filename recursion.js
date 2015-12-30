@@ -157,3 +157,19 @@ function mergeSort(arr) {
 }
 
 console.log(mergeSort([10,9,4,6,3,1,9,2,5]));
+
+function subsets(arr) {
+  if (arr.length === 0) { return [[]]; }
+  else {
+    var val = arr.shift();
+    var subsetsPrev = subsets(arr);
+    var arr = [];
+    for (i = 0; i < subsetsPrev.length; i++) {
+      var foo = subsetsPrev[i].concat([val]);
+      arr.push(foo);
+    }
+    return subsetsPrev.concat(arr);
+  }
+}
+
+console.log(subsets([1,2,3]));
