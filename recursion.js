@@ -94,7 +94,7 @@ function makeChange1(amount, coins) {
 
 console.log(makeChange1(99, [25, 10, 5, 1]));
 
-// assume coins array is in descending order
+
 function makeChange2(amount, coins) {
   if (amount === 0) { return []; }
   var bestChange = undefined;
@@ -112,3 +112,34 @@ function makeChange2(amount, coins) {
 }
 
 console.log(makeChange2(14, [10, 7, 1]));
+
+function merge(arr1, arr2, arr3) {
+  var i1 = 0;
+  var i2 = 0;
+  var i3 = 0;
+  var n1 = arr1.length;
+  var n2 = arr2.length;
+  while (i1 < n1 && i2 < n2) {
+    if (arr1[i1] < arr2[i2]) {
+      arr3[i3] = arr1[i1];
+      i1 += 1;
+    }
+    else {
+      arr3[i3] = arr2[i2];
+      i2 += 1;
+    }
+    i3 += 1;
+  }
+  // get remaining elements from arr1, if any
+  while (i1 < n1) {
+    arr3[i3] = arr1[i1];
+    i1 += 1;
+    i3 += 1;
+  }
+  while (i2 < n2) {
+    arr3[i3] = arr2[i2];
+    i2 += 1;
+    i3 += 1;
+  }
+  return arr3;
+}
